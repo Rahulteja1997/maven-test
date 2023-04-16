@@ -1,4 +1,6 @@
-FROM tomcat:latest
-RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
-COPY ./*.war /usr/local/tomcat/webapps
-
+FROM nginx
+LABEL maintainer="jahnavi"
+RUN mkdir /appfolder
+WORKDIR /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
